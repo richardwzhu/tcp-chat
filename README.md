@@ -4,6 +4,7 @@ A simple chat server and client that communicates over TCP.
 
 ## Project Structure
 
+```
 tcp-chat/
 │
 ├── src/                    # Source files
@@ -29,4 +30,4 @@ tcp-chat/
 │
 ├── CMakeLists.txt          # CMake project file
 └── README.md               # Project overview and guide
-
+```
