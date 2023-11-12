@@ -37,6 +37,7 @@ tcp-chat/
 
 #### Prerequisites:
 * A C++ compiler (e.g., g++ or clang)
+* [CMake](https://cmake.org/) (optional for build automation)
 
 #### Compilation:
 Navigate to the respective directories (`src/server/` and `src/client/)` and run the following commands to compile the server and client:
