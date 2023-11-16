@@ -12,10 +12,8 @@ int main() {
 
     std::string message = "Hello from client";
     client.sendMessage(message);
-    std::cout << "Message sent: " << message << std::endl;
 
     std::string response = client.receiveMessage();
-    std::cout << "Response from server: " << response << std::endl;
 
     return 0;
 }

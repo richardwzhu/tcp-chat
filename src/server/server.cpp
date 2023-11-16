@@ -1,6 +1,7 @@
 // src/server/server.cpp
 #include "server/server.h"
 #include "common/constants.h"
+#include "common/utils.h"
 #include <iostream>
 #include <cstring>
 #include <unistd.h>
@@ -45,7 +46,7 @@ namespace tcp_chat {
 
         void Server::run() {
             listenForConnections();
-            std::cout << "Server is listening on port " << port << std::endl;
+            tcp_chat::common::logMessage("Server is listening on port " + std::to_string(port));
 
             while (true) {
                 int addrlen = sizeof(address);
@@ -63,10 +64,11 @@ namespace tcp_chat {
         void Server::handleClient(int clientSocket) {
             char buffer[tcp_chat::common::BUFFER_SIZE] = {0};
             read(clientSocket, buffer, tcp_chat::common::BUFFER_SIZE);
-            std::cout << "Message from client: " << buffer << std::endl;
+            tcp_chat::common::logMessage("Message from client: " + std::string(buffer));
 
             const char *response = "Hello from server";
             send(clientSocket, response, strlen(response), 0);
+            tcp_chat::common::logMessage("Response sent to client.");
         }
 
     } // namespace server

@@ -1,6 +1,7 @@
 // src/client/client.cpp
 #include "client/client.h"
 #include "common/constants.h"
+#include "common/utils.h"
 #include <iostream>
 #include <cstring>
 #include <unistd.h>
@@ -36,18 +37,22 @@ namespace tcp_chat {
 
         void Client::connectToServer() {
             if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
-                std::cerr << "Connection Failed" << std::endl;
+                tcp_chat::common::logMessage("Connection Failed");
                 exit(EXIT_FAILURE);
             }
+            tcp_chat::common::logMessage("Connected to server.");
         }
 
         void Client::sendMessage(const std::string& message) {
             send(sock, message.c_str(), message.length(), 0);
+            tcp_chat::common::logMessage("Message sent: " + message);
         }
 
         std::string Client::receiveMessage() {
             char buffer[tcp_chat::common::BUFFER_SIZE] = {0};
             read(sock, buffer, tcp_chat::common::BUFFER_SIZE);
+            std::string receivedMessage = std::string(buffer);
+            tcp_chat::common::logMessage("Response from server: " + receivedMessage);
             return std::string(buffer);
         }
 
