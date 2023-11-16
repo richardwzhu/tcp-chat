@@ -44,15 +44,15 @@ Navigate to the respective directories (`src/server/` and `src/client/)` and run
 
 For the server:
 ```bash
-g++ -o server main.cpp server.cpp -I../../include/
+g++ -o server main.cpp server.cpp ../../src/common/utils.cpp -I../../include/
 ```
 * -o server specifies the name of the output executable.
-* main.cpp and server.cpp are the source files.
+* main.cpp, server.cpp, and ../../src/common/utils.cpp are the source files.
 * -I../../include/ tells the compiler where to find the header files.
 
 For the client:
 ```bash
-g++ -o client main.cpp client.cpp -I../../include/
+g++ -o client main.cpp client.cpp ../../src/common/utils.cpp -I../../include/
 ```
 
 ## Running the Program
