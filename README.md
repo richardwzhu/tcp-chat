@@ -33,29 +33,35 @@ tcp-chat/
 └── README.md               # Project overview and guide
 ```
 
-## Installation
+## Installation Prerequisites
 
-#### Prerequisites:
-* A C++ compiler (e.g., g++ or clang)
-* [CMake](https://cmake.org/) (optional for build automation)
+Before you begin, ensure your system meets the following requirements:
+* C++ Compiler: A modern C++ compiler is needed. g++ (on Linux) or Clang (on macOS) is recommended.
+* Operating System: The instructions are written for Unix-like operating systems, including Linux distributions and macOS.
 
-#### Compilation:
-Navigate to the respective directories (`src/server/` and `src/client/)` and run the following commands to compile the server and client:
+## Compilation
+Navigate to the respective directories (`src/server/` and `src/client/)` and run the following commands to compile the server and client and create executables in their respective direcotires:
 
 For the server:
 ```bash
-g++ -o server main.cpp
+g++ -o server main.cpp server.cpp -I../../include/
 ```
+* -o server specifies the name of the output executable.
+* main.cpp and server.cpp are the source files.
+* -I../../include/ tells the compiler where to find the header files.
 
 For the client:
 ```bash
-g++ -o client main.cpp
+g++ -o client main.cpp client.cpp -I../../include/
 ```
 
-## Usage
+## Running the Program
 Start the Server:
 Navigate to the server's directory and run `./server`.
-The server will start and listen for incoming connections.
+
 Run the Client:
 In a new terminal, navigate to the client's directory and run `./client`.
-The client will connect to the server and you can start chatting.
+
+* Server Side: The server listens for incoming connections. Once a client connects, it receives a message from the client, processes it, and can send back a response.
+* Client Side: The client connects to the server, sends a predefined message, and displays the response received from the server.
+* End of Session: The client will automatically terminate after receiving the server's response. The server, however, will continue to run, waiting for new connections. To stop the server, use Ctrl+C in the server's terminal window.
