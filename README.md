@@ -33,34 +33,50 @@ tcp-chat/
 └── README.md               # Project overview and guide
 ```
 
-## Installation Prerequisites
+# Setup Instructions
 
-Before you begin, ensure your system meets the following requirements:
-* C++ Compiler: A modern C++ compiler is needed. g++ (on Linux) or Clang (on macOS) is recommended.
-* Operating System: The instructions are written for Unix-like operating systems, including Linux distributions and macOS.
+## System Requirements
 
-## Compilation
-Navigate to the respective directories (`src/server/` and `src/client/)` and run the following commands to compile the server and client and create executables in their respective direcotires:
+* C++ Compiler (e.g., g++, Clang)
+* CMake (version 3.10 or higher)
 
-For the server:
+## Installation Steps
+
+1. Clone the repository:
 ```bash
-g++ -o server main.cpp server.cpp ../../src/common/utils.cpp -I../../include/
-```
-* -o server specifies the name of the output executable.
-* main.cpp, server.cpp, and ../../src/common/utils.cpp are the source files.
-* -I../../include/ tells the compiler where to find the header files.
-
-For the client:
-```bash
-g++ -o client main.cpp client.cpp ../../src/common/utils.cpp -I../../include/
+git clone https://github.com/richardwzhu/tcp-chat
 ```
 
-## Running the Program
-Start the Server:
-Navigate to the server's directory and run `./server`.
+2. Navigate to the project directory:
+```bash
+cd tcp-chat
+```
+3. Create a build directory and navigate into it:
+```bash
+mkdir build && cd build
+```
 
-Run the Client:
-In a new terminal, navigate to the client's directory and run `./client`.
+4. Run CMake to configure the project:
+```bash
+cmake ..
+```
+
+5. Compile the project:
+```bash
+make
+```
+
+## Running the Server and Client
+
+* To run the server:
+```bash
+./server
+```
+
+* To run the client:
+```bash
+./client
+```
 
 * Server Side: The server listens for incoming connections. Once a client connects, it receives a message from the client, processes it, and can send back a response.
 * Client Side: The client connects to the server, sends a predefined message, and displays the response received from the server.
