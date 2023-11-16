@@ -1,5 +1,6 @@
 // src/server/server.cpp
 #include "server/server.h"
+#include "common/constants.h"
 #include <iostream>
 #include <cstring>
 #include <unistd.h>
@@ -60,8 +61,8 @@ namespace tcp_chat {
         }
 
         void Server::handleClient(int clientSocket) {
-            char buffer[1024] = {0};
-            read(clientSocket, buffer, 1024);
+            char buffer[tcp_chat::common::BUFFER_SIZE] = {0};
+            read(clientSocket, buffer, tcp_chat::common::BUFFER_SIZE);
             std::cout << "Message from client: " << buffer << std::endl;
 
             const char *response = "Hello from server";

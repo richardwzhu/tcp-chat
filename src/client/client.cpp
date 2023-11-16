@@ -1,5 +1,6 @@
 // src/client/client.cpp
 #include "client/client.h"
+#include "common/constants.h"
 #include <iostream>
 #include <cstring>
 #include <unistd.h>
@@ -9,7 +10,7 @@ namespace tcp_chat {
     namespace client {
 
         Client::Client(const std::string& server_ip, int server_port) 
-            : server_ip(server_ip), server_port(server_port) {
+            : server_ip(server_ip), server_port(server_port == 0 ? tcp_chat::common::DEFAULT_PORT : server_port) {
             setupSocket();
         }
 
@@ -45,8 +46,8 @@ namespace tcp_chat {
         }
 
         std::string Client::receiveMessage() {
-            char buffer[1024] = {0};
-            read(sock, buffer, 1024);
+            char buffer[tcp_chat::common::BUFFER_SIZE] = {0};
+            read(sock, buffer, tcp_chat::common::BUFFER_SIZE);
             return std::string(buffer);
         }
 
