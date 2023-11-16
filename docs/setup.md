@@ -33,12 +33,12 @@ make
 
 ## Running the Server and Client
 
-* To run the server:
+To run the server:
 ```bash
 ./server
 ```
 
-* To run the client:
+To run the client:
 ```bash
 ./client
 ```
