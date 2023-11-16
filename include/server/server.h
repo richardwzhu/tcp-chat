@@ -14,6 +14,7 @@ namespace tcp_chat {
             ~Server();
 
             void run();
+            int getPort() const { return port; }
 
         private:
             int server_fd;
